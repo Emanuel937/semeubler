@@ -13,9 +13,8 @@ const famille         = $("input[name='famille'"),
  *  this function fill the empty input
  *  by famille , sous famille and sous sous famille
  */
-const fillInputEmptyInput =()=>{
+const ajaxRequestWithEmaScript =()=>{
     var setupAjax = {
-        type:"get",
         url:homePageUrl[0].value,
         data:{
             famille:sousSousFamille[0].value
@@ -26,14 +25,14 @@ const fillInputEmptyInput =()=>{
         },
         find:(data)=>{
             if(data != "bad"){
-            let jsonToObj = JSON.parse(data);
-            famille[0].value = jsonToObj[0]["famille"];
-            sousFamille[0].value = jsonToObj[0]["sous_famille"];
-            p.innerHTML = "The result was found";
-            p.className="text-primary";
+                let jsonToObj = JSON.parse(data);
+                famille[0].value = jsonToObj[0]["famille"];
+                sousFamille[0].value = jsonToObj[0]["sous_famille"];
+                p.innerHTML = "The result was found";
+                p.className="text-primary";
           }else{
-            p.innerHTML = "* The result was not found for: " + sousSousFamille[0].value + " * ";
-            p.className="text-danger";
+                p.innerHTML = "* The result was not found for: " + sousSousFamille[0].value + " * ";
+                p.className="text-danger";
           }
         }
     }
@@ -41,10 +40,12 @@ const fillInputEmptyInput =()=>{
 }
 /**
  * this function only 
- * execute the ajax request to the server
+ * execute the ajax request 
+ * to the server , when uer client
+ * on search button
  */
  buttonSearch.onclick = ()=>{
-    fillInputEmptyInput();
+    ajaxRequestWithEmaScript();
 }
 /**
  * remove the input value while the

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Semeubler</title>
+        <!--bootstrap css-->
+        <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+        <!-- style -->
+        <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    </head>
+    <body>
+        <header>
+            <h1>Semeubler.com</h1>
+        </header>
+        <main>
+           <section>
+            <form class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label  for ="famille">Famille: </label>
+                        <input  type = "search"  name="famille" class="form-control" id="famille"  placeholder ="Famille value :" readOnly="true"/>
+                    </div>
+                        <div class="col-md-4">
+                        <label  for ="sous_famille">Sous famille: </label>
+                        <input  type = "sous_search" name="sous_famille" class="form-control"  id="sous_famille" placeholder ="Sous famille value" readOnly="true"/>
+                    </div>
+                        <div class="col-md-4">
+                        <label  for ="sous_sous_famille">Sous sous famille: </label>
+                        <input  type = "search" name="sous_sous_famille" class="form-control"  id="sous_sous_famille" placeholder ="taper la sous sous famille pour trouver ..."/>
+                    </div>
+                </div>
+                <!-- input that stock home page url -->
+                <input type="hidden" value="{{path('home')}}">
+                <button type = "button" class="btn btn-primary" id="search"> Search ... </button>
+                <p id="p"></p>
+            </form>
+          </section>
+          <article>
+            <div class="text-center row">
+                {#getting data from database #}
+                <section class="col-md-4">
+                    <h2>-Famille-</h2>
+                    <ul>
+                        {% for x in elements_famille %}
+                            <li> {{x.famille}} </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+                <section class="col-md-4">
+                    <h2>-Sous Famille-</h2>
+                    <ul>
+                        {% for x in elements_sous_famille %}
+                            <li> {{x.sous_famille}} </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+                <section class="col-md-4">
+                    <h2>-Sous sous famille-</h2>
+                   <ul>
+                        {% for x in sous_sous_famille %}
+                            <li> {{x.sous_sous_famille}} </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </div>
+          </article>
+        </main>
+        <footer>
+        </footer>
+        <!--
+            I'm using Emascript library instead of using jquery 
+            for ajax request ,this javascript libray was created 
+            by Emanuel Abizimi (me)
+        -->
+        <script src="{{asset('js/Emascript.js')}}">
+        </script>
+        <!--- the ajax request -->
+        <script src="{{asset('js/ajax_request.js')}}">
+        </script>
+    </body>
+</html>

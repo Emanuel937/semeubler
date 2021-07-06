@@ -1,0 +1,14 @@
+header{
+    border:1px solid #ccc;
+    padding:20px;
+    margin-bottom: 8px;
+}
+header h1{
+    font-size:16px;
+    color:#61b6af
+}
+h2{
+    font-size: 20px;
+    color: #6b6161;
+    text-align:center
+}
